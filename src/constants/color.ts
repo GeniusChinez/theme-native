@@ -1,154 +1,4 @@
-# theme-native
-
-Theming for react native apps
-
-## Installation
-
-```sh
-npm install theme-native
-
-OR
-
-yarn add theme-native
-```
-
-## Usage
-
-```js
-import { ThemeProvider } from 'theme-native';
-
-// wrap the root of your app in the theme provider as follows:
-export default function App() {
-  return (
-    <ThemeProvider>
-      {/* your app here */}
-    </ThemeProvider>
-  )
-}
-```
-
-
- mode?: "light" | "dark" | "device";
-  colorAliases?: {
-    Primary?: ColorName;
-    Success?: ColorName;
-    Secondary?: ColorName;
-    Danger?: ColorName;
-    Warning?: ColorName;
-    Link?: ColorName;
-  },
-### ThemeProvider Props
-| Name        | Description |
-| ----------- | ----------- |
-| mode        | values: "light", "dark", "device"       |
-| colorAliases   | An object that contains colors you wish to alias. The following keys are supported: "Primary", "Success", "Secondary", "Danger", "Warning", "Link". For example: ``` colorAliases={{ Primary: "Red" }}```. Note: The values must come from [ColorName](#colorname).      |
-
-### Modes
-By default, we use the device mode (light OR dark). However, you can control this manually.
-
-1. Via Hooks
-```ts
-useDarkMode() // uses the dark mode throughout your app
-useLightMode() // uses light mode throughout your app
-useDeviceTheme() // uses your device theme
-```
-
-2. Using a callback
-```ts
-const { setPreferredMode } = useTheme();
-
-// somewhere:
-setPreferredMode("dark") // -> dark
-setPreferredMode("light") // -> light
-setPreferredMode(undefined) // -> device theme
-```
-
-3. Props to ThemeProvider (as explained in the  [ThemeProviderProps](#themeprovider-props) section).
-
-### Exported Components
-We exported some components to abstract some of the features of this library.
-1. Text - you can use this whereever you used the react native Text component
-```tsx
-<Text color={"red"} darkColor={"white"}>Someone is grumpy today</Text>
-```
-2. View - you can use this whereever you used the react native View component
-```tsx
-<View bg={"white"} darkBg={"black"} />
-```
-
-### Colors
-NOTE: Explore more color options in the [ColorName](#colorname) section
-```tsx
-const theme = useTheme();
-// render
-<Text color={theme.color.Gray[600]}>First name basis</Text>
-```
-
-### Spacing
-NOTE: You can use this for padding and margin
-```tsx
-const theme = useTheme();
-// render
-<View
-  style={{
-    padding: theme.spacing[4],
-    marginHorizontal: theme.spacing[2]
-  }}
-/>
-```
-
-### Border Radius
-```tsx
-const theme = useTheme();
-// render
-<View
-  style={{
-    borderRadius: theme.borderRadius.Md,
-  }}
-/>
-```
-
-### Height
-```tsx
-const theme = useTheme();
-// render
-<View
-  style={{
-    height: theme.height[4],
-  }}
-/>
-```
-
-### Width
-```tsx
-const theme = useTheme();
-// render
-<View
-  style={{
-    height: theme.width[4],
-  }}
-/>
-```
-
-### Border Width
-```tsx
-const theme = useTheme();
-// render
-<View
-  style={{
-    borderWidth: theme.borderWidth[2],
-  }}
-/>
-```
-
-
-### NOTE: (Documentation underway !!!)
-``` I'm getting written, LOL 😅```
-
-### ColorName
-This is where color names come from. ColorName is essentially any key in the following object:
-```ts
-const Colors = {
+const _Color = {
   Inherit: 'inherit',
   Current: 'currentColor',
   Transparent: 'transparent',
@@ -441,17 +291,16 @@ const Colors = {
     '900': '#881337',
     '950': '#4c0519',
   },
-}
-```
+};
 
-## Contributing
+export type ColorName = keyof typeof _Color;
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
-
-## License
-
-MIT
-
----
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
+export const Color = {
+  ..._Color,
+  Primary: _Color.Blue,
+  Success: _Color.Green,
+  Secondary: _Color.Gray,
+  Danger: _Color.Red,
+  Warning: _Color.Amber,
+  Link: _Color.Green,
+};

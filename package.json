@@ -29,6 +29,7 @@
     "example": "yarn workspace theme-native-example",
     "test": "jest",
     "typecheck": "tsc --noEmit",
+    "fix": "eslint \"**/*.{js,ts,tsx}\" --fix",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli lib",
     "prepare": "bob build",

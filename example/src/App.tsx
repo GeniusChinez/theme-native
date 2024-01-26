@@ -1,18 +1,36 @@
-import * as React from 'react';
-
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'theme-native';
+import React from 'react';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import { ThemeProvider, Text, View, useTheme } from 'theme-native';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
+    <ThemeProvider mode="device">
+      <View style={styles.container}>
+        <ActualTest />
+      </View>
+    </ThemeProvider>
+  );
+}
+
+function ActualTest() {
+  const { setPreferredMode, spacing, color } = useTheme();
+  return (
+    <View
+      style={{
+        gap: spacing[4],
+      }}
+    >
+      <Text>Hard times</Text>
+      <TouchableOpacity
+        style={{ padding: spacing[5], backgroundColor: color.Primary[600] }}
+        onPress={() => {
+          setPreferredMode('light');
+        }}
+      >
+        <Text color="white" darkColor="white">
+          use light mode
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
