@@ -15,3 +15,4 @@ export * from './constants/font';
 export * from './constants/height';
 export * from './constants/rem';
 export * from './constants/spacing';
+export * from './constants/dp';
