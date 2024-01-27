@@ -27,16 +27,6 @@ export default function App() {
 }
 ```
 
-
- mode?: "light" | "dark" | "device";
-  colorAliases?: {
-    Primary?: ColorName;
-    Success?: ColorName;
-    Secondary?: ColorName;
-    Danger?: ColorName;
-    Warning?: ColorName;
-    Link?: ColorName;
-  },
 ### ThemeProvider Props
 | Name        | Description |
 | ----------- | ----------- |

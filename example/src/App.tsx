@@ -25,6 +25,30 @@ function ActualTest() {
       }}
       darkBg={color.Stone[900]}
     >
+      <Text weight="Bold" variant="h1">
+        H1
+      </Text>
+      <Text weight="Bold" variant="h2">
+        H2
+      </Text>
+      <Text weight="Bold" variant="h3">
+        H3
+      </Text>
+      <Text weight="Bold" variant="h4">
+        H4
+      </Text>
+      <Text weight="Bold" variant="h5">
+        H5
+      </Text>
+      <Text weight="Bold" variant="h6">
+        H6
+      </Text>
+      <Text weight="Bold" variant="h7">
+        H7
+      </Text>
+      <Text weight="Bold" variant="p">
+        P
+      </Text>
       <Text weight="Bold">Hard times</Text>
 
       <TouchableOpacity
