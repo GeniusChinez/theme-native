@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { Text as ReactNativeText } from 'react-native';
 import type { TextProps as ReactNativeTextProps } from 'react-native';
@@ -11,12 +12,12 @@ export interface TextProps extends ReactNativeTextProps {
   color?: string;
   darkColor?: string;
 
-  // implement the following
   weight?: keyof typeof FontWeight;
   variant?: TextVariant;
 
-  // isUnderlined?: boolean;
-  // isItalic?: boolean;
+  isUnderlined?: boolean;
+  isItalic?: boolean;
+  isCancelled?: boolean;
 }
 
 export const variantSizeMap: Record<TextVariant, keyof typeof FontSize> = {
@@ -31,8 +32,18 @@ export const variantSizeMap: Record<TextVariant, keyof typeof FontSize> = {
 };
 
 export function Text(props: TextProps) {
-  const { color, darkColor, style, size, weight, variant, ...restOfProps } =
-    props;
+  const {
+    color,
+    darkColor,
+    style,
+    size,
+    weight,
+    variant,
+    isUnderlined,
+    isItalic,
+    isCancelled,
+    ...restOfProps
+  } = props;
   const { isDarkMode } = useTheme();
 
   const theme = useTheme();
@@ -41,6 +52,14 @@ export function Text(props: TextProps) {
     <ReactNativeText
       style={{
         color: isDarkMode ? darkColor || theme.color.Gray[300] : color,
+        fontStyle: isItalic ? 'italic' : 'normal',
+        textDecorationLine: isCancelled
+          ? isUnderlined
+            ? 'underline line-through'
+            : 'line-through'
+          : isUnderlined
+          ? 'underline'
+          : 'none',
         fontSize: variant
           ? theme.fontSize[variantSizeMap[variant]]
           : theme.fontSize[size || 'base'],

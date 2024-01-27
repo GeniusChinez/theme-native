@@ -25,16 +25,16 @@ function ActualTest() {
       }}
       darkBg={color.Stone[900]}
     >
-      <Text weight="Bold" variant="h1">
+      <Text weight="Bold" variant="h1" isCancelled>
         H1
       </Text>
-      <Text weight="Bold" variant="h2">
+      <Text weight="Bold" variant="h2" isUnderlined isCancelled>
         H2
       </Text>
-      <Text weight="Bold" variant="h3">
+      <Text weight="Bold" variant="h3" isUnderlined>
         H3
       </Text>
-      <Text weight="Bold" variant="h4">
+      <Text weight="Bold" variant="h4" isItalic>
         H4
       </Text>
       <Text weight="Bold" variant="h5">
