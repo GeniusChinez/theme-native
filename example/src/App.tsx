@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { ThemeProvider, Text, View, useTheme } from 'theme-native';
@@ -13,22 +14,31 @@ export default function App() {
 }
 
 function ActualTest() {
-  const { setPreferredMode, spacing, color } = useTheme();
+  const { setPreferredMode, spacing, color, isDarkMode } = useTheme();
   return (
     <View
       style={{
         gap: spacing[4],
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
+      darkBg={color.Stone[900]}
     >
-      <Text>Hard times</Text>
+      <Text weight="Bold">Hard times</Text>
+
       <TouchableOpacity
         style={{ padding: spacing[5], backgroundColor: color.Primary[600] }}
         onPress={() => {
-          setPreferredMode('light');
+          if (isDarkMode) {
+            setPreferredMode('light');
+          } else {
+            setPreferredMode('dark');
+          }
         }}
       >
         <Text color="white" darkColor="white">
-          use light mode
+          use {isDarkMode ? 'light' : 'dark'} mode
         </Text>
       </TouchableOpacity>
     </View>
@@ -38,12 +48,5 @@ function ActualTest() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
   },
 });
