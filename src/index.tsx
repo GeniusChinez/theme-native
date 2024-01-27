@@ -6,8 +6,6 @@ export * from './hooks/useDeviceTheme';
 
 // components
 export * from './components/ThemeProvider';
-export * from './components/Text';
-export * from './components/View';
 
 // ...
 export * from './constants/border-radius';

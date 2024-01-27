@@ -55,17 +55,6 @@ setPreferredMode(undefined) // -> device theme
 
 3. Props to ThemeProvider (as explained in the  [ThemeProviderProps](#themeprovider-props) section).
 
-### Exported Components
-We exported some components to abstract some of the features of this library.
-1. Text - you can use this whereever you used the react native Text component
-```tsx
-<Text color={"red"} darkColor={"white"}>Someone is grumpy today</Text>
-```
-2. View - you can use this whereever you used the react native View component
-```tsx
-<View bg={"white"} darkBg={"black"} />
-```
-
 ### Colors
 NOTE: Explore more color options in the [ColorName](#colorname) section
 ```tsx
